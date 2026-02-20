@@ -1,0 +1,220 @@
+# YC-OpenNext Compatibility Matrix
+# Defines supported Next.js features per version
+
+versions:
+  - range: '>=12.0.0 <12.2.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: unsupported
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: unsupported
+      serverActions:
+        status: unsupported
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+        notes: 'Basic ISR support, no on-demand revalidation'
+      revalidatePath:
+        status: unsupported
+      revalidateTag:
+        status: unsupported
+      middleware:
+        status: partial
+        notes: 'Early middleware implementation, limited API support'
+      streaming:
+        status: partial
+        notes: 'Limited by API Gateway payload format'
+
+  - range: '>=12.2.0 <13.0.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: unsupported
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: unsupported
+      serverActions:
+        status: unsupported
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+      revalidatePath:
+        status: unsupported
+      revalidateTag:
+        status: unsupported
+      middleware:
+        status: supported
+        notes: 'Stable middleware, edge-emulated mode recommended'
+      streaming:
+        status: partial
+        notes: 'Limited by API Gateway payload format'
+
+  - range: '>=13.0.0 <13.4.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: partial
+        notes: 'Experimental App Router, not all features stable'
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: partial
+        notes: 'Basic route handlers, experimental'
+      serverActions:
+        status: unsupported
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+      revalidatePath:
+        status: partial
+        notes: 'App Router only, experimental'
+      revalidateTag:
+        status: partial
+        notes: 'App Router only, experimental'
+      middleware:
+        status: supported
+        notes: 'Edge-emulated mode recommended'
+      streaming:
+        status: partial
+        notes: 'App Router RSC streaming, limited by API Gateway'
+
+  - range: '>=13.4.0 <14.0.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: supported
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: supported
+      serverActions:
+        status: partial
+        notes: 'Experimental Server Actions'
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+      revalidatePath:
+        status: supported
+      revalidateTag:
+        status: partial
+        notes: 'Basic tag revalidation'
+      middleware:
+        status: supported
+        notes: 'Edge-emulated mode recommended'
+      streaming:
+        status: partial
+        notes: 'Limited by API Gateway payload format'
+
+  - range: '>=14.0.0 <15.0.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: supported
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: supported
+      serverActions:
+        status: supported
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+      revalidatePath:
+        status: supported
+      revalidateTag:
+        status: supported
+      middleware:
+        status: supported
+        notes: 'Edge-emulated mode recommended'
+      streaming:
+        status: partial
+        notes: 'Limited by API Gateway payload format'
+
+  - range: '>=15.0.0 <16.0.0'
+    features:
+      pagesRouter:
+        status: supported
+      appRouter:
+        status: supported
+      apiRoutes:
+        status: supported
+      routeHandlers:
+        status: supported
+      serverActions:
+        status: supported
+      nextImage:
+        status: supported
+      isr:
+        status: supported
+      revalidatePath:
+        status: supported
+      revalidateTag:
+        status: supported
+      middleware:
+        status: supported
+        notes: 'Edge-emulated mode recommended, Turbopack support experimental'
+      streaming:
+        status: partial
+        notes: 'Limited by API Gateway payload format'
+      ppr:
+        status: experimental
+        notes: 'Partial Prerendering experimental'
+
+# Edge runtime differences (applies to all versions)
+edgeRuntimeDifferences:
+  - feature: 'V8 Isolates'
+    status: unsupported
+    alternative: 'Node.js process with Web API polyfills'
+  - feature: '128KB code limit'
+    status: 'not enforced'
+    alternative: 'YC Function limits apply (10MB)'
+  - feature: 'Native fetch'
+    status: emulated
+    alternative: 'Node.js undici'
+  - feature: 'WebCrypto API'
+    status: emulated
+    alternative: 'Node.js crypto polyfill'
+  - feature: 'TextEncoder/Decoder'
+    status: supported
+    alternative: 'Node.js built-in'
+  - feature: 'URL/URLSearchParams'
+    status: supported
+    alternative: 'Node.js built-in'
+  - feature: 'Request/Response/Headers'
+    status: emulated
+    alternative: 'Polyfilled via undici'
+  - feature: 'WebAssembly'
+    status: partial
+    alternative: 'Node.js WebAssembly support'
+
+# YC-specific limitations
+ycLimitations:
+  - limitation: 'API Gateway payload size'
+    value: '10MB'
+    impact: 'Large responses must be chunked or use Object Storage'
+  - limitation: 'Function execution time'
+    value: '10 minutes max'
+    impact: 'Long-running tasks need queue-based processing'
+  - limitation: 'Function memory'
+    value: '8GB max'
+    impact: 'Memory-intensive operations may need optimization'
+  - limitation: 'Cold start time'
+    value: '100-500ms typical'
+    impact: 'Use prepared instances for latency-sensitive apps'
+  - limitation: 'Concurrent executions'
+    value: '1000 per function'
+    impact: 'Scale limits for high-traffic apps'
