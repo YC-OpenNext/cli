@@ -6,7 +6,7 @@
   "author": "YC-OpenNext Contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yc-opennext/yc-opennext.git",
+    "url": "https://github.com/YC-OpenNext/cli.git",
     "directory": "packages/yc-opennext"
   },
   "publishConfig": {
