@@ -1,6 +1,6 @@
 {
   "name": "@yc-opennext/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool for building and deploying Next.js apps to Yandex Cloud",
   "license": "MIT",
   "author": "YC-OpenNext Contributors",

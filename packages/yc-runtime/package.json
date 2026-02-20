@@ -1,6 +1,6 @@
 {
   "name": "@yc-opennext/runtime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Runtime adapters for Next.js on Yandex Cloud Functions",
   "license": "MIT",
   "author": "YC-OpenNext Contributors",
