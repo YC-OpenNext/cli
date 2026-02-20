@@ -1,8 +1,6 @@
 name: CD
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 env:
@@ -58,19 +56,19 @@ jobs:
           npm publish --access public
           cd ../..
 
+      - name: Get version
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ github.run_number }}
-          name: Release v${{ github.run_number }}
-          body: |
-            ## Release v${{ github.run_number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="v${{ steps.version.outputs.version }}"
+          gh release create "$VERSION" \
+            --title "Release $VERSION" \
+            --notes "## Release $VERSION
 
-            ### Packages Published
-            - `@yc-opennext/cli`
-            - `@yc-opennext/runtime`
-
-            ### Changes
-            ${{ github.event.head_commit.message }}
-          draft: false
-          prerelease: false
+          ### Packages Published
+          - \`@yc-opennext/cli@${{ steps.version.outputs.version }}\`
+          - \`@yc-opennext/runtime@${{ steps.version.outputs.version }}\`"
