@@ -1,4 +1,4 @@
-# @yc-opennext/runtime
+# @yc-next/runtime
 
 Runtime adapters for executing Next.js applications on Yandex Cloud Functions.
 
@@ -19,7 +19,7 @@ This package provides the runtime handlers that bridge Yandex Cloud API Gateway 
 Processes all dynamic requests including SSR pages and API routes.
 
 ```javascript
-import { createServerHandler } from '@yc-opennext/runtime/server-handler';
+import { createServerHandler } from '@yc-next/runtime/server-handler';
 
 export const handler = createServerHandler({
   dir: __dirname,
@@ -33,7 +33,7 @@ export const handler = createServerHandler({
 Optimizes images on-the-fly with caching.
 
 ```javascript
-import { createImageHandler } from '@yc-opennext/runtime/image-handler';
+import { createImageHandler } from '@yc-next/runtime/image-handler';
 
 export const handler = createImageHandler({
   cacheBucket: 'my-cache-bucket',
@@ -47,7 +47,7 @@ export const handler = createImageHandler({
 Manages incremental static regeneration with YDB DocAPI backend.
 
 ```javascript
-import { ISRCache } from '@yc-opennext/runtime/isr/cache';
+import { ISRCache } from '@yc-next/runtime/isr/cache';
 
 const cache = new ISRCache({
   cacheBucket: 'my-cache-bucket',
@@ -78,7 +78,7 @@ await cache.revalidatePath('/blog/post-1');
 Executes Next.js middleware with Edge Runtime emulation.
 
 ```javascript
-import { runMiddleware } from '@yc-opennext/runtime/middleware/runner';
+import { runMiddleware } from '@yc-next/runtime/middleware/runner';
 
 const result = await runMiddleware({
   manifest: middlewareManifest,
@@ -102,7 +102,7 @@ const result = await runMiddleware({
 - `ASSETS_BUCKET` - Object Storage bucket for static assets
 - `YDB_DOCAPI_ENDPOINT` - YDB Document API endpoint
 - `REVALIDATE_SECRET` - HMAC secret for revalidation
-- `DEBUG` - Debug logging (yc-opennext:\*)
+- `DEBUG` - Debug logging (yc-next:\*)
 
 ## Edge Runtime Compatibility
 
@@ -172,7 +172,7 @@ try {
 Enable debug logging:
 
 ```bash
-DEBUG=yc-opennext:* LOG_LEVEL=debug
+DEBUG=yc-next:* LOG_LEVEL=debug
 ```
 
 View function logs:

@@ -1,13 +1,13 @@
-# @yc-opennext/cli
+# @yc-next/cli
 
 CLI tool for building and deploying Next.js applications to Yandex Cloud.
 
 ## Installation
 
 ```bash
-npm install -g @yc-opennext/cli
+npm install -g @yc-next/cli
 # or
-pnpm add -D @yc-opennext/cli
+pnpm add -D @yc-next/cli
 ```
 
 ## Commands
@@ -17,7 +17,7 @@ pnpm add -D @yc-opennext/cli
 Analyze a Next.js project to detect capabilities and compatibility.
 
 ```bash
-yc-opennext analyze --project ./my-app --output ./analysis
+yc-next analyze --project ./my-app --output ./analysis
 
 Options:
   -p, --project <path>  Path to Next.js project (required)
@@ -30,7 +30,7 @@ Options:
 Build and package a Next.js application for YC deployment.
 
 ```bash
-yc-opennext build \
+yc-next build \
   --project ./my-app \
   --output ./build \
   --standalone
@@ -49,7 +49,7 @@ Options:
 Generate a deployment manifest from build artifacts.
 
 ```bash
-yc-opennext deploy-manifest \
+yc-next deploy-manifest \
   --build-dir ./build \
   --out ./manifest.json
 
@@ -64,7 +64,7 @@ Options:
 Upload build artifacts to Yandex Cloud Object Storage.
 
 ```bash
-yc-opennext upload \
+yc-next upload \
   --build-dir ./build \
   --bucket my-assets-bucket \
   --prefix v1
@@ -85,7 +85,7 @@ Options:
 Show deployment plan without executing.
 
 ```bash
-yc-opennext plan --project ./my-app
+yc-next plan --project ./my-app
 
 Options:
   -p, --project <path>  Path to Next.js project (required)
@@ -232,7 +232,7 @@ module.exports = {
 Run analysis to check support:
 
 ```bash
-yc-opennext analyze --project . --verbose
+yc-next analyze --project . --verbose
 ```
 
 ## Development
@@ -241,24 +241,24 @@ yc-opennext analyze --project . --verbose
 
 ```bash
 # Clone repository
-git clone https://github.com/yc-opennext/yc-opennext
-cd yc-opennext
+git clone https://github.com/yc-next/yc-next
+cd yc-next
 
 # Install dependencies
 pnpm install
 
 # Build CLI
-pnpm --filter @yc-opennext/cli build
+pnpm --filter @yc-next/cli build
 
 # Run locally
-node packages/yc-opennext/dist/index.js analyze --project ../my-app
+node packages/yc-next/dist/index.js analyze --project ../my-app
 ```
 
 ### Testing
 
 ```bash
 # Run tests
-pnpm --filter @yc-opennext/cli test
+pnpm --filter @yc-next/cli test
 
 # Test with fixtures
 pnpm fixture:test

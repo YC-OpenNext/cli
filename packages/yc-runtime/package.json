@@ -1,12 +1,12 @@
 {
-  "name": "@yc-opennext/runtime",
+  "name": "@yc-next/runtime",
   "version": "1.0.1",
   "description": "Runtime adapters for Next.js on Yandex Cloud Functions",
   "license": "MIT",
-  "author": "YC-OpenNext Contributors",
+  "author": "YC-Next Contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YC-OpenNext/cli.git",
+    "url": "https://github.com/YC-Next/cli.git",
     "directory": "packages/yc-runtime"
   },
   "publishConfig": {

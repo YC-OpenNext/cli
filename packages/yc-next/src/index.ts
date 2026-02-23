@@ -11,7 +11,7 @@ import { ManifestGenerator } from './manifest/index.js';
 const program = new Command();
 
 program
-  .name('yc-opennext')
+  .name('yc-next')
   .description('CLI tool for deploying Next.js apps to Yandex Cloud')
   .version('1.0.0');
 
@@ -208,7 +208,7 @@ program
       }
 
       console.log(chalk.gray('\n─'.repeat(50)));
-      console.log(chalk.green('✅ Plan complete. Run "yc-opennext build" to proceed.'));
+      console.log(chalk.green('✅ Plan complete. Run "yc-next build" to proceed.'));
     } catch (error) {
       console.error(
         chalk.red('❌ Planning failed:'),

@@ -36,7 +36,7 @@ importers:
         specifier: ^1.2.0
         version: 1.6.1(@types/node@20.19.33)
 
-  packages/yc-opennext:
+  packages/yc-next:
     dependencies:
       '@aws-sdk/client-s3':
         specifier: ^3.490.0

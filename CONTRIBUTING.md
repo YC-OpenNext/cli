@@ -1,6 +1,6 @@
-# Contributing to YC-OpenNext
+# Contributing to YC-Next
 
-Thank you for your interest in contributing to YC-OpenNext! This guide will help you get started.
+Thank you for your interest in contributing to YC-Next! This guide will help you get started.
 
 ## Code of Conduct
 
@@ -19,8 +19,8 @@ Please be respectful and constructive in all interactions. We're building someth
 1. Fork and clone the repository:
 
 ```bash
-git clone https://github.com/your-username/yc-opennext.git
-cd yc-opennext
+git clone https://github.com/your-username/yc-next.git
+cd yc-next
 ```
 
 2. Install dependencies:
@@ -44,9 +44,9 @@ pnpm test
 ## Project Structure
 
 ```
-yc-opennext/
+yc-next/
 ├── packages/
-│   ├── yc-opennext/      # CLI tool
+│   ├── yc-next/      # CLI tool
 │   └── yc-runtime/       # Runtime adapters
 ├── terraform/            # Infrastructure modules
 ├── fixtures/             # Test Next.js apps
@@ -94,11 +94,11 @@ pnpm format
 
 ```bash
 # Build the CLI
-pnpm --filter @yc-opennext/cli build
+pnpm --filter @yc-next/cli build
 
 # Test with a real app
 cd /path/to/nextjs-app
-/path/to/yc-opennext/packages/yc-opennext/dist/index.js build \
+/path/to/yc-next/packages/yc-next/dist/index.js build \
   --project . \
   --output ./test-build
 ```
@@ -152,7 +152,7 @@ For end-to-end testing with YC:
 
 ### New CLI Command
 
-1. Add command in `packages/yc-opennext/src/index.ts`
+1. Add command in `packages/yc-next/src/index.ts`
 2. Implement logic in appropriate module
 3. Add tests
 4. Update README
@@ -175,7 +175,7 @@ For end-to-end testing with YC:
 
 ### Adding Next.js Version Support
 
-1. Update compatibility matrix: `packages/yc-opennext/src/compat/compat.yml`
+1. Update compatibility matrix: `packages/yc-next/src/compat/compat.yml`
 2. Add fixture for testing
 3. Update analyzer logic if needed
 4. Document any caveats
@@ -208,7 +208,7 @@ When adding features, consider:
 ### Enable Debug Logging
 
 ```bash
-DEBUG=yc-opennext:* pnpm test
+DEBUG=yc-next:* pnpm test
 ```
 
 ### Local Function Testing
@@ -231,7 +231,7 @@ console.log(result);
 
 ```bash
 # Profile build performance
-time pnpm --filter @yc-opennext/cli build
+time pnpm --filter @yc-next/cli build
 
 # Profile function performance
 node --prof handler.js

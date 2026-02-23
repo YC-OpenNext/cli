@@ -1,5 +1,5 @@
 /**
- * @yc-opennext/runtime - Runtime adapters for Next.js on Yandex Cloud Functions
+ * @yc-next/runtime - Runtime adapters for Next.js on Yandex Cloud Functions
  */
 
 // Server handler for SSR and API routes

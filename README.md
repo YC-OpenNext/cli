@@ -1,4 +1,4 @@
-# YC-OpenNext CLI + Runtime
+# YC-Next CLI + Runtime
 
 CLI tool and runtime adapters for building and deploying Next.js applications to Yandex Cloud.
 
@@ -6,22 +6,22 @@ CLI tool and runtime adapters for building and deploying Next.js applications to
 
 | Package | Description |
 |---------|-------------|
-| `@yc-opennext/cli` | CLI for building, analyzing, and uploading Next.js apps |
-| `@yc-opennext/runtime` | Runtime adapters for Yandex Cloud Functions |
+| `@yc-next/cli` | CLI for building, analyzing, and uploading Next.js apps |
+| `@yc-next/runtime` | Runtime adapters for Yandex Cloud Functions |
 
 ## Installation
 
 ```bash
-npm install @yc-opennext/cli
+npm install @yc-next/cli
 ```
 
 ## CLI Commands
 
 ```bash
-yc-opennext analyze    # Analyze Next.js project capabilities
-yc-opennext build      # Build and package for Yandex Cloud
-yc-opennext upload     # Upload artifacts to Object Storage
-yc-opennext plan       # Show deployment plan
+yc-next analyze    # Analyze Next.js project capabilities
+yc-next build      # Build and package for Yandex Cloud
+yc-next upload     # Upload artifacts to Object Storage
+yc-next plan       # Show deployment plan
 ```
 
 ## Development
