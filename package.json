@@ -1,10 +1,10 @@
 {
-  "name": "yc-opennext-cli",
+  "name": "yc-next-cli",
   "version": "1.0.1",
   "private": true,
   "description": "CLI + Runtime for deploying Next.js to Yandex Cloud",
   "license": "MIT",
-  "author": "YC-OpenNext Contributors",
+  "author": "YC-Next Contributors",
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
@@ -14,8 +14,8 @@
     "ci": "pnpm lint && pnpm test && pnpm build",
     "dev": "pnpm -r --parallel dev",
     "clean": "pnpm -r exec rm -rf dist node_modules && rm -rf node_modules",
-    "cli": "node packages/yc-opennext/dist/index.js",
-    "cli:dev": "tsx packages/yc-opennext/src/index.ts",
+    "cli": "node packages/yc-next/dist/index.js",
+    "cli:dev": "tsx packages/yc-next/src/index.ts",
     "setup": "pnpm install && pnpm build"
   },
   "devDependencies": {

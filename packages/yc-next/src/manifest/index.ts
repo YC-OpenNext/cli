@@ -50,7 +50,7 @@ export class ManifestGenerator {
 
     if (!(await fs.pathExists(capabilitiesPath))) {
       throw new Error(
-        'No manifest or capabilities file found. Please run "yc-opennext build" first.',
+        'No manifest or capabilities file found. Please run "yc-next build" first.',
       );
     }
 

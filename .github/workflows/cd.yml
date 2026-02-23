@@ -44,19 +44,19 @@ jobs:
       - name: Configure npm for GitHub Packages
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-          echo "@yc-opennext:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "@yc-next:registry=https://npm.pkg.github.com" >> ~/.npmrc
 
-      - name: Publish @yc-opennext/cli
+      - name: Publish @yc-next/cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           VERSION=${{ steps.version.outputs.version }}
-          cd packages/yc-opennext
+          cd packages/yc-next
           npm version $VERSION --no-git-tag-version --allow-same-version
           npm publish --access public || echo "Version $VERSION already published, skipping"
           cd ../..
 
-      - name: Publish @yc-opennext/runtime
+      - name: Publish @yc-next/runtime
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -80,6 +80,6 @@ jobs:
               --notes "## Release $VERSION
 
           ### Packages Published
-          - \`@yc-opennext/cli@${{ steps.version.outputs.version }}\`
-          - \`@yc-opennext/runtime@${{ steps.version.outputs.version }}\`"
+          - \`@yc-next/cli@${{ steps.version.outputs.version }}\`
+          - \`@yc-next/runtime@${{ steps.version.outputs.version }}\`"
           fi

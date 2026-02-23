@@ -1,6 +1,6 @@
 # Local Development Guide
 
-How to run and test YC-OpenNext locally on your machine.
+How to run and test YC-Next locally on your machine.
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ How to run and test YC-OpenNext locally on your machine.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yc-opennext/yc-opennext.git
-cd yc-opennext
+git clone https://github.com/yc-next/yc-next.git
+cd yc-next
 
 # Install dependencies and build
 pnpm setup
@@ -49,12 +49,12 @@ pnpm cli:dev build --project ../my-nextjs-app --output ./test-build
 
 ```bash
 # Build and link globally
-cd packages/yc-opennext
+cd packages/yc-next
 pnpm build
 npm link
 
 # Now use anywhere
-yc-opennext analyze --project /path/to/nextjs-app
+yc-next analyze --project /path/to/nextjs-app
 ```
 
 ## Testing with Local Next.js Apps
@@ -78,8 +78,8 @@ echo 'export async function GET() { return Response.json({ message: "Hello" }) }
 # Build the Next.js app
 npm run build
 
-# Go back to yc-opennext
-cd ../yc-opennext
+# Go back to yc-next
+cd ../yc-next
 
 # Analyze the test app
 pnpm cli:dev analyze --project ../test-app --verbose
@@ -129,7 +129,7 @@ Run TypeScript in watch mode for active development:
 
 ```bash
 # Terminal 1: Watch and rebuild on changes
-cd packages/yc-opennext
+cd packages/yc-next
 pnpm dev
 
 # Terminal 2: Test your changes
@@ -149,7 +149,7 @@ pnpm test -- --watch
 pnpm test -- --coverage
 
 # Test specific package
-pnpm --filter @yc-opennext/cli test
+pnpm --filter @yc-next/cli test
 ```
 
 ### 3. Linting and Formatting
@@ -269,8 +269,8 @@ CMD ["node", "index.js"]
 Build and run:
 
 ```bash
-docker build -f Dockerfile.local -t yc-opennext-local .
-docker run -p 3000:3000 yc-opennext-local
+docker build -f Dockerfile.local -t yc-next-local .
+docker run -p 3000:3000 yc-next-local
 ```
 
 ## Debugging
@@ -279,20 +279,20 @@ docker run -p 3000:3000 yc-opennext-local
 
 ```bash
 # Set debug environment variable
-export DEBUG=yc-opennext:*
+export DEBUG=yc-next:*
 
 # Run with debug output
-DEBUG=yc-opennext:* pnpm cli:dev build --project ../test-app --output ./build
+DEBUG=yc-next:* pnpm cli:dev build --project ../test-app --output ./build
 ```
 
 ### 2. Use Node Inspector
 
 ```bash
 # Run with Node debugger
-node --inspect-brk packages/yc-opennext/dist/index.js analyze --project ../test-app
+node --inspect-brk packages/yc-next/dist/index.js analyze --project ../test-app
 
 # Or with tsx
-node --inspect-brk ./node_modules/.bin/tsx packages/yc-opennext/src/index.ts analyze --project ../test-app
+node --inspect-brk ./node_modules/.bin/tsx packages/yc-next/src/index.ts analyze --project ../test-app
 ```
 
 Then open Chrome DevTools at `chrome://inspect`.
@@ -309,7 +309,7 @@ Create `.vscode/launch.json`:
       "type": "node",
       "request": "launch",
       "name": "Debug CLI",
-      "program": "${workspaceFolder}/packages/yc-opennext/src/index.ts",
+      "program": "${workspaceFolder}/packages/yc-next/src/index.ts",
       "args": ["analyze", "--project", "../test-app"],
       "runtimeArgs": ["-r", "tsx"],
       "cwd": "${workspaceFolder}",
@@ -324,7 +324,7 @@ Create `.vscode/launch.json`:
 
 ### Adding a New CLI Command
 
-1. Add command in `packages/yc-opennext/src/index.ts`
+1. Add command in `packages/yc-next/src/index.ts`
 2. Create implementation in appropriate module
 3. Add tests in `*.test.ts`
 4. Update documentation
@@ -356,7 +356,7 @@ pnpm build
 pnpm test
 
 # Package for release (if needed)
-cd packages/yc-opennext
+cd packages/yc-next
 npm pack
 ```
 
@@ -387,21 +387,21 @@ npx tsc --showConfig
 
 ```bash
 # Make sure it's built
-cd packages/yc-opennext
+cd packages/yc-next
 pnpm build
 
 # Check Node version
 node --version  # Should be 18+
 
 # Try with full path
-node /absolute/path/to/packages/yc-opennext/dist/index.js --help
+node /absolute/path/to/packages/yc-next/dist/index.js --help
 ```
 
 ## Performance Profiling
 
 ```bash
 # Profile the CLI
-node --prof packages/yc-opennext/dist/index.js build --project ../large-app --output ./build
+node --prof packages/yc-next/dist/index.js build --project ../large-app --output ./build
 
 # Process the profile
 node --prof-process isolate-*.log > profile.txt
